@@ -8,7 +8,6 @@ const Auth0ProviderContext = ({ children }) => {
   const domain = process.env.REACT_APP_AUTH0_DOMAIN;
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
   const audience = 'https://churras-api-auth';
-  const issuer = 'https://dev-pszxu3rf.us.auth0.com/';
   const onRedirectCallback = (appState) => {
     navigate(appState?.returnto || window.location.pathname);
   };
