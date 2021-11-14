@@ -1,10 +1,10 @@
-import { AppBar, Button, Toolbar, Typography } from '@mui/material';
-import React from 'react';
+import { AppBar, Toolbar, Typography } from '@mui/material';
+import { useAuth0 } from '@auth0/auth0-react';
+import { LoginButton, LogoutButton } from '../Login';
 
-export default function Header({
-  accountButtonComponent,
-  authButtonComponent,
-}) {
+export default function Header({ accountButtonComponent }) {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <AppBar position="static" color="darkUi">
       <Toolbar>
@@ -17,7 +17,7 @@ export default function Header({
           CHURRAS.co
         </Typography>
         {accountButtonComponent}
-        {authButtonComponent}
+        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
       </Toolbar>
     </AppBar>
   );

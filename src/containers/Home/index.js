@@ -49,11 +49,7 @@ export default function Home() {
 
   return (
     <div>
-      <Header
-        authButtonComponent={
-          isAuthenticated ? <LogoutButton /> : <LoginButton />
-        }
-      />
+      <Header />
       <SearchWithAdd addAction={addAction} />
       <p>user : {JSON.stringify(user)}</p>
       {isAuthenticated && <button onClick={getToken}>Get Token</button>}
@@ -62,27 +58,3 @@ export default function Home() {
     </div>
   );
 }
-
-const LoginButton = () => {
-  const { loginWithRedirect } = useAuth0();
-
-  return (
-    <Button
-      variant="text"
-      color="lightFont"
-      onClick={() => loginWithRedirect()}
-    >
-      Log In
-    </Button>
-  );
-};
-
-const LogoutButton = () => {
-  const { logout } = useAuth0();
-
-  return (
-    <Button variant="text" color="lightFont" onClick={() => logout()}>
-      Log Out
-    </Button>
-  );
-};

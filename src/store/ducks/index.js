@@ -1,7 +1,9 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import session from "./session";
+import session from './session';
+import churrasForm from './churrasForm';
 
 export default combineReducers({
-  session
+  session,
+  churrasForm,
 });

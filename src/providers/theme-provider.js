@@ -18,6 +18,22 @@ const theme = createTheme({
       main: '#ECECEA',
     },
   },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          fontSize: 8,
+        },
+      },
+    },
+    MuiStepIcon: {
+      styleOverrides: {
+        text: {
+          fill: '#ECECEA',
+        },
+      },
+    },
+  },
 });
 
 const ThemeProviderContext = ({ children }) => {

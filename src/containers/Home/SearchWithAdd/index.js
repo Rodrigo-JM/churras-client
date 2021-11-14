@@ -22,7 +22,7 @@ export default function SearchWithAdd({ searchAction, addAction }) {
           '@media (min-width: 768px)': { width: 520 },
         }}
       >
-        <Grid container xs={12}>
+        <Grid container item xs={12}>
           <Grid item xs={8}>
             <TextField
               id="outlined-basic"
