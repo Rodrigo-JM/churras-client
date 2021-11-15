@@ -6,10 +6,10 @@ import { Creators as sessionCreators } from '../../store/ducks/session';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
-import SearchWithAdd from './SearchWithAdd';
-import ChurrasList from './ChurrasList';
+import { Box, Typography } from '@mui/material';
+import { LoginButton, LogoutButton } from '../../components/Login';
 
-export default function Home() {
+export default function LadingPage() {
   const { isAuthenticated, isLoading, user, getAccessTokenSilently } =
     useAuth0();
   const dispatch = useDispatch();
@@ -50,8 +50,10 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <SearchWithAdd addAction={addAction} />
-      <ChurrasList addAction={addAction} />
+      <Box>
+        <Typography>Entre para prosseguir</Typography>
+        {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
+      </Box>
     </div>
   );
 }

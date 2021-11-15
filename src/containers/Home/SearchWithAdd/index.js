@@ -17,9 +17,9 @@ export default function SearchWithAdd({ searchAction, addAction }) {
     >
       <Box
         sx={{
-          width: '80%%',
+          width: '80%',
           height: 40,
-          '@media (min-width: 768px)': { width: 520 },
+          '@media (min-width: 768px)': { width: 768 },
         }}
       >
         <Grid container item xs={12}>

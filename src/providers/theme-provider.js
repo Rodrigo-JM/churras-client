@@ -11,6 +11,9 @@ const theme = createTheme({
     secondary: {
       main: '#E86F5C',
     },
+    tertiary: {
+      main: '#C88CE3',
+    },
     darkUi: {
       main: '#39393A',
     },
@@ -30,6 +33,21 @@ const theme = createTheme({
       styleOverrides: {
         text: {
           fill: '#ECECEA',
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.8rem',
+          margin: '0',
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: 12,
         },
       },
     },

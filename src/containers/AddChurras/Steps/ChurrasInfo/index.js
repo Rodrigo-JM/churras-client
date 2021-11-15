@@ -74,7 +74,8 @@ export default function ChurrasInfo() {
       sx={{
         padding: '1em 1em',
         marginTop: '3em',
-        '@media (min-width: 768px)': { width: 520 },
+        '@media (min-width: 768px)': { width: 768 },
+        background: '#FFFFFF',
       }}
     >
       <Grid container gap={1}>
@@ -123,14 +124,12 @@ export default function ChurrasInfo() {
                   }
                   changePropOnForm('date', newValue.toISOString());
                 }}
-                ampm={false}
-                inputFormat="dd-MM-yyyy hh:mm"
-                mask="__/__/____ __:__ _M"
+                inputFormat="dd/MM/yyyy hh:mm a"
               />
             </LocalizationProvider>
           </Grid>
         </Grid>
-        <Grid container gap={1} xs={12}>
+        <Grid container gap={1} item xs={12}>
           <Grid item xs={12}>
             <FormGroup size="small">
               <FormControlLabel
@@ -142,6 +141,7 @@ export default function ChurrasInfo() {
                       changePropOnForm('hasVeganOption', e.target.checked)
                     }
                     size="small"
+                    checked={churrasHasVeganOption}
                   />
                 }
                 label="Opções Veganas"
@@ -158,6 +158,7 @@ export default function ChurrasInfo() {
                       changePropOnForm('drink', e.target.checked)
                     }
                     size="small"
+                    checked={churrasDrink}
                   />
                 }
                 size="small"
@@ -166,7 +167,7 @@ export default function ChurrasInfo() {
             </FormGroup>
           </Grid>
         </Grid>
-        <Grid container gap={2} xs={12}>
+        <Grid container gap={2} item xs={12}>
           <Grid item xs={12}>
             <FormGroup size="small">
               <FormControlLabel
@@ -177,6 +178,7 @@ export default function ChurrasInfo() {
                       changePropOnForm('usePixKey', e.target.checked)
                     }
                     size="small"
+                    checked={churrasUsePixKey}
                   />
                 }
                 label="Adicionar minha chave pix"

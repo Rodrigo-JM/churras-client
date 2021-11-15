@@ -1,30 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
-
-import React, { useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import React, { useEffect } from 'react';
+import { Route, Navigate } from 'react-router-dom';
+import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
+import Loader from '../Loader';
 import { Creators as sessionCreators } from '../../store/ducks/session';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header';
-import SearchWithAdd from './SearchWithAdd';
-import ChurrasList from './ChurrasList';
 
-export default function Home() {
-  const { isAuthenticated, isLoading, user, getAccessTokenSilently } =
-    useAuth0();
-  const dispatch = useDispatch();
+const ProtectedRoute = ({ component, ...args }) => {
+  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { sessionUser, token } = useSelector((state) => state.session);
-
   const getToken = async () => {
     const token = await getAccessTokenSilently();
     dispatch(sessionCreators.setToken(token));
   };
-
-  const addAction = () => {
-    navigate('/churras/add');
-  };
-
   useEffect(() => {
     if (user) getToken();
   }, [user]);
@@ -43,15 +34,17 @@ export default function Home() {
     }
   }, [sessionUser]);
 
-  if (isLoading) {
-    return <h1>Loading....</h1>;
-  }
-
-  return (
-    <div>
-      <Header />
-      <SearchWithAdd addAction={addAction} />
-      <ChurrasList addAction={addAction} />
-    </div>
+  const Provided = (
+    <UserProvider user={user} token={token}>
+      {component}
+    </UserProvider>
   );
-}
+
+  return <Route element={isAuthenticated ? Provided : <Loader />} {...args} />;
+};
+
+const UserProvider = ({ user, token, children }) => {
+  return user ? (token ? { ...children } : null) : null;
+};
+
+export default ProtectedRoute;
