@@ -28,11 +28,26 @@ export default function ChurrasList({ addAction }) {
   }, [sessionUser]);
 
   return (
-    <Box sx={{ padding: '1em 1em', marginTop: '3em' }}>
+    <Box
+      sx={{
+        padding: '1em 1em',
+        marginTop: '3em',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
       {singleChurrasLoader ? (
         <Loader />
       ) : (
-        <Grid container gap={1} sx={{ justifyContent: 'center' }}>
+        <Grid
+          container
+          gap={1}
+          sx={{
+            width: '100%',
+            '@media (min-width: 768px)': { width: 768 },
+            justifyContent: 'flex-start',
+          }}
+        >
           {churrasList.map((churras) => {
             return (
               <Grid xs={5} md={3}>

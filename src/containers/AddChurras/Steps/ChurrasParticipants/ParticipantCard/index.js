@@ -320,7 +320,7 @@ export default function ParticipantCard({
                   disabled={!confirmEnabled}
                   onClick={submitParticipantFeedback}
                 >
-                  <CheckIcon fill="#ECECEA" />
+                  <CheckIcon color="lightFont" />
                 </Button>
               </Grid>
               <Grid item sx={{ height: 38 }} xs={6}>
