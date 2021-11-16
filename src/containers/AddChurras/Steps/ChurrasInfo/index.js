@@ -66,7 +66,6 @@ export default function ChurrasInfo() {
   ]);
 
   const changePropOnForm = (prop, value) => {
-    console.log(value);
     dispatch(churrasCreators.setChurrasProperty(prop, value));
   };
 
@@ -159,7 +158,6 @@ export default function ChurrasInfo() {
                       onChange={(e) =>
                         changePropOnForm('drink', e.target.checked)
                       }
-                      onClick={() => console.log('click')}
                       size="small"
                       checked={churrasDrink}
                       disabled

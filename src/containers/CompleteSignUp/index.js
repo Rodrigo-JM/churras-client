@@ -171,6 +171,18 @@ export default function CompleteSignUp() {
                   '@media (min-width: 768px)': { width: 768 },
                 }}
               >
+                {warning && (
+                  <Typography
+                    color="secondary"
+                    sx={{
+                      letterSpacing: '0.1em',
+                      fontWeight: 'bold',
+                      marginBottom: '0.5em',
+                    }}
+                  >
+                    {warning}
+                  </Typography>
+                )}
                 {!isUserPage() || isEditing ? (
                   <Grid item xs={12}>
                     <Button

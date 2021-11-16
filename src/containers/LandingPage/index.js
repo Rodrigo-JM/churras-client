@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Creators as sessionCreators } from '../../store/ducks/session';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import { Box, Button, Typography } from '@mui/material';
-import { LoginButton, LogoutButton } from '../../components/Login';
+import { LogoutButton } from '../../components/Login';
 import Loader from '../../components/Loader';
 
 export default function LadingPage() {

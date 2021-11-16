@@ -1,22 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Creators as churrasCreators } from '../../../../store/ducks/churrasForm';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormHelperText,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import ParticipantsList from './ParticipantList';
 
 export default function ChurrasParticipants() {

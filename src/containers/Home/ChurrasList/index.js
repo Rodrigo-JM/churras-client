@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
 
-import React, { useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import React, { useEffect } from 'react';
 import { Creators as sessionCreators } from '../../../store/ducks/session';
 import { Creators as churrasCreators } from '../../../store/ducks/churrasForm';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import ChurrasCard from './ChurrasCard';
 import AddIcon from '@mui/icons-material/Add';
@@ -15,7 +13,6 @@ export default function ChurrasList({ addAction }) {
   const dispatch = useDispatch();
   const {
     sessionUser,
-    token,
     churrasList,
     loading: { singleChurras: singleChurrasLoader },
   } = useSelector((state) => state.session);

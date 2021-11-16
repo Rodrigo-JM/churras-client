@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { calculateValueDeposited } from './utils';
 
 import { Box, Grid, Typography } from '@mui/material';

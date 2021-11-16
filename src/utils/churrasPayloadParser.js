@@ -1,5 +1,4 @@
 export const churrasPayloadParser = (data, user) => {
-  console.log(data);
   const churrasData = { ...data };
 
   churrasData.pixKey = churrasData.usePixKey ? user.pixKey : '';
@@ -24,6 +23,5 @@ export const fixParticipantStatus = (participant) => {
       ? 'confirmed'
       : participant.status;
 
-  console.log(participant);
   return participant;
 };

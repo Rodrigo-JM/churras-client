@@ -1,24 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Creators as churrasCreators } from '../../store/ducks/churrasForm';
 import { Creators as sessionCreators } from '../../store/ducks/session';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormHelperText,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import ParticipantsList from '../AddChurras/Steps/ChurrasParticipants/ParticipantList';
 import ChurrasHeader from '../../components/ChurrasHeader';
 import { useNavigate, useParams } from 'react-router-dom';

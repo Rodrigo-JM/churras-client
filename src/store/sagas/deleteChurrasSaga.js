@@ -3,7 +3,6 @@ import { deleteChurras as deleteChurrasRequest } from '../../services/churras';
 import { Creators as sessionCreators } from '../ducks/session';
 
 function* deleteChurras({ churras }) {
-  console.log(churras);
   try {
     const response = yield call(deleteChurrasRequest, churras);
 

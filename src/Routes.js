@@ -4,13 +4,11 @@ import CompleteSignUp from './containers/CompleteSignUp';
 import Home from './containers/Home';
 import LandingPage from './containers/LandingPage';
 import AddChurras from './containers/AddChurras';
-import Loader from './components/Loader';
 import { useAuth0 } from '@auth0/auth0-react';
 import ParticipantFeedback from './containers/ParticipantFeedback';
 import SingleChurras from './containers/SingleChurras';
 const AppRoutes = () => {
-  const { isAuthenticated, isLoading, user, getAccessTokenSilently } =
-    useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   return (
     <Routes>

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import {
   Accordion,
@@ -13,7 +13,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ParticipantCard from '../ParticipantCard';
 import { formatCurrency } from '../../ChurrasValues/utils';
 
-export default function ParticipantsList({ participants, editMode }) {
+export default function ParticipantsList({
+  participants,
+  editMode,
+  warningChange,
+}) {
   const [participantSelected, setParticipantSelected] = useState(false);
 
   const handleChange = (participantIndex) => (event, isExpanded) => {

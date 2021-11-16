@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Creators as sessionCreators } from '../../store/ducks/session';
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,8 +12,7 @@ import Loader from '../../components/Loader';
 import { Box } from '@mui/material';
 
 export default function Home() {
-  const { isAuthenticated, isLoading, user, getAccessTokenSilently } =
-    useAuth0();
+  const { isLoading, user, getAccessTokenSilently } = useAuth0();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { sessionUser, token } = useSelector((state) => state.session);

@@ -3,7 +3,6 @@ import { convertDate } from '../../containers/Home/ChurrasList/ChurrasCard/utils
 import React from 'react';
 
 export default function ChurrasHeader({ date, address, title }) {
-  console.log(date, address, title);
   return (
     <Box sx={{ height: 100, padding: '1.5em' }}>
       <Typography

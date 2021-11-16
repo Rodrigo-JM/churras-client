@@ -1,4 +1,4 @@
-import { Box, Button, Tooltip, Typography } from '@mui/material';
+import { Button, Tooltip, Typography } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { CopyToClipboard } from 'react-copy-to-clipboard';

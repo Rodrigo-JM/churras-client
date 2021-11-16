@@ -1,15 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  Typography,
-} from '@mui/material';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 import GroupIcon from '@mui/icons-material/Group';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import { convertDate } from './utils';

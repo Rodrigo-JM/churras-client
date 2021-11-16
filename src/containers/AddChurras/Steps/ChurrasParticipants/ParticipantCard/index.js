@@ -9,19 +9,14 @@ import {
   Box,
   Button,
   Checkbox,
-  FormControl,
   FormControlLabel,
   FormGroup,
-  FormHelperText,
   Grid,
-  InputLabel,
-  MenuItem,
-  Select,
   TextField,
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Loader from '../../../../../components/Loader';
 
 export default function ParticipantCard({

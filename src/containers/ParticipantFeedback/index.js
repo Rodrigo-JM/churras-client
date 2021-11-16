@@ -12,20 +12,12 @@ import {
   Box,
   Button,
   Checkbox,
-  FormControl,
   FormControlLabel,
   FormGroup,
-  FormHelperText,
   Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
   Typography,
 } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import ChurrasHeader from '../../components/ChurrasHeader';
 import { formatCurrency } from '../AddChurras/Steps/ChurrasValues/utils';
