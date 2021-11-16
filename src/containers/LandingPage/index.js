@@ -6,12 +6,18 @@ import { Creators as sessionCreators } from '../../store/ducks/session';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { LoginButton, LogoutButton } from '../../components/Login';
+import Loader from '../../components/Loader';
 
 export default function LadingPage() {
-  const { isAuthenticated, isLoading, user, getAccessTokenSilently } =
-    useAuth0();
+  const {
+    isAuthenticated,
+    isLoading,
+    user,
+    getAccessTokenSilently,
+    loginWithRedirect,
+  } = useAuth0();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { sessionUser, token } = useSelector((state) => state.session);
@@ -19,10 +25,6 @@ export default function LadingPage() {
   const getToken = async () => {
     const token = await getAccessTokenSilently();
     dispatch(sessionCreators.setToken(token));
-  };
-
-  const addAction = () => {
-    navigate('/churras/add');
   };
 
   useEffect(() => {
@@ -44,16 +46,76 @@ export default function LadingPage() {
   }, [sessionUser]);
 
   if (isLoading) {
-    return <h1>Loading....</h1>;
+    return (
+      <Box
+        sx={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Loader />
+      </Box>
+    );
   }
 
   return (
-    <div>
+    <Box
+      sx={{
+        height: '100%',
+        width: '100%',
+      }}
+    >
       <Header />
-      <Box>
-        <Typography>Entre para prosseguir</Typography>
-        {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
+      <Box
+        sx={{
+          padding: '1em',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: 18,
+            textTransform: 'uppercase',
+            textDecorationColor: 'AppWorkspace',
+            marginBottom: 3,
+            width: '100%',
+          }}
+        >
+          Crie eventos <br />
+          Chame seus amigos <br />
+          Determine os valores <br />
+        </Typography>
+        {!isAuthenticated ? (
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={loginWithRedirect}
+          >
+            ENTRAR
+          </Button>
+        ) : (
+          <LogoutButton variant="contained" />
+        )}
+        <Typography
+          sx={{
+            fontSize: 16,
+            textDecorationColor: 'AppWorkspace',
+            marginTop: 2,
+            lineHeight: '1.6em',
+          }}
+        >
+          Seus convidados receberão uma link onde cada um pode ajudar você a
+          entender melhor o que precisa para um churras. E você terá o cálculo
+          de todos esses valores dentro do seu evento. Se a gurizada é lenta
+          você mesmo pode preencher as necessidades e confirmações de presença.
+        </Typography>
       </Box>
-    </div>
+    </Box>
   );
 }

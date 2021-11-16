@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Creators as sessionCreators } from '../../store/ducks/session';
+import { Creators as churrasCreators } from '../../store/ducks/churrasForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
@@ -63,6 +64,7 @@ export default function AddChurras() {
     if (lastStep()) {
       dispatch(sessionCreators.startLoader('churras'));
       dispatch(sessionCreators.startConfirmChurras(churrasForm, sessionUser));
+      dispatch(churrasCreators.clearChurrasForm());
       navigate('/');
       return;
     }
@@ -76,6 +78,7 @@ export default function AddChurras() {
   const returnAction = () => {
     if (firstStep()) {
       // cancelar churras
+      dispatch(churrasCreators.clearChurrasForm());
       navigate('/');
       return;
     }

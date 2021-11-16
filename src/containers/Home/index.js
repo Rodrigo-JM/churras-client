@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import SearchWithAdd from './SearchWithAdd';
 import ChurrasList from './ChurrasList';
+import Loader from '../../components/Loader';
+import { Box } from '@mui/material';
 
 export default function Home() {
   const { isAuthenticated, isLoading, user, getAccessTokenSilently } =
@@ -44,7 +46,19 @@ export default function Home() {
   }, [sessionUser]);
 
   if (isLoading) {
-    return <h1>Loading....</h1>;
+    return (
+      <Box
+        sx={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alingItems: 'center',
+        }}
+      >
+        <Loader />
+      </Box>
+    );
   }
 
   return (

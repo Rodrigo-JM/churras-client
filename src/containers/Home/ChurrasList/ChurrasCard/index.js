@@ -24,12 +24,18 @@ export default function ChurrasCard({ churras }) {
         height: 200,
         display: 'flex',
         flexDirection: 'column',
+        background: '#F7EFFB',
+        cursor: 'pointer',
       }}
+      onClick={() => navigate(`/churras/${churras._id}`)}
     >
       <CardContent sx={{ padding: '0.5em', height: '100%' }}>
         <Grid container sx={{ height: '100%' }}>
           <Grid item xs={12}>
-            <Typography sx={{ fontSize: 14 }} gutterBottom>
+            <Typography
+              sx={{ fontSize: 18, letterSpacing: '0.2em', fontWeight: 'bold' }}
+              gutterBottom
+            >
               {convertDate(churras.date)}
             </Typography>
           </Grid>

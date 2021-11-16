@@ -1,13 +1,13 @@
 import { Button } from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
 
-export const LoginButton = () => {
+export const LoginButton = ({ variant, color }) => {
   const { loginWithRedirect } = useAuth0();
 
   return (
     <Button
-      variant="text"
-      color="lightFont"
+      variant={variant ? variant : 'text'}
+      color={color ? variant : 'lightFont'}
       onClick={() => loginWithRedirect()}
     >
       Log In
@@ -15,11 +15,15 @@ export const LoginButton = () => {
   );
 };
 
-export const LogoutButton = () => {
+export const LogoutButton = ({ variant, color }) => {
   const { logout } = useAuth0();
 
   return (
-    <Button variant="text" color="lightFont" onClick={() => logout()}>
+    <Button
+      variant={variant ? variant : 'text'}
+      color={color ? variant : 'lightFont'}
+      onClick={() => logout()}
+    >
       Log Out
     </Button>
   );

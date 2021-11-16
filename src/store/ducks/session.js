@@ -23,12 +23,43 @@ export const { Types, Creators } = createActions({
   startGetChurrasList: ['userId'],
   successGetChurrasList: ['churrasList'],
   errorGetChurrasList: ['error'],
+  startGetChurras: ['churrasId'],
+  successGetChurras: ['churras'],
+  errorGetChurras: ['error'],
+  startDeleteChurras: ['churras'],
+  successDeleteChurras: ['churrasId'],
+  errorDeleteChurras: ['error'],
   startLoader: ['loader'],
+  startSubmitParticipantFeedback: ['data', 'churraId'],
+  successSubmitParticipantFeedback: [''],
+  errorSubmitParticipantFeedback: ['error'],
 });
 
 const initialState = {
   churrasList: [],
-  singleChurras: {},
+  singleChurras: {
+    step: 0,
+    participants: [],
+    hasVeganOption: false,
+    drink: true,
+    date: undefined,
+    valueForTotal: 0,
+    valueForDrink: 0,
+    valueForFood: 0,
+    valueForVegan: 0,
+    title: '',
+    description: '',
+    observations: '',
+    pixKey: '',
+    defineValueForParticipants: true,
+    usePixKey: true,
+    address: '',
+    totalFoodParticipants: 0,
+    totalDrinkParticipants: 0,
+    totalVeganParticipants: 0,
+    totalParticipants: 0,
+    user: '',
+  },
   editMode: false,
   sessionUser: {},
   token: '',
@@ -36,10 +67,13 @@ const initialState = {
     sessionUser: null,
     churrasList: null,
     singleChurras: null,
+    churrasForm: null,
+    participantFeedback: null,
   },
   loading: {
     churras: 0,
     user: 0,
+    participantFeedback: 0,
   },
 };
 
@@ -95,10 +129,27 @@ const errorDeleteSessionUser = (state, { error }) => {
   };
 };
 
+const successDeleteChurras = (state, { churrasId }) => {
+  return {
+    ...state,
+    churrasList: [
+      ...state.churrasList.filter((churras) => churras._id !== churrasId),
+    ],
+    loading: { ...state.loading, churras: 0 },
+  };
+};
+
+const errorDeleteChurras = (state, { error }) => {
+  return {
+    ...state,
+    error: { ...error, sessionUser: error },
+    loading: { ...state.loading, churras: 0 },
+  };
+};
+
 const successCreateChurras = (state, { churras }) => {
   return {
     ...state,
-    churrasList: [...state.churrasList, churras],
     loading: { ...state.loading, churras: 0 },
   };
 };
@@ -109,15 +160,15 @@ const errorCreateChurras = (state, { error }) => {
     error: {
       ...error,
       sessionUser: error,
-      loading: { ...state.loading, churras: 0 },
     },
+    loading: { ...state.loading, churras: 0 },
   };
 };
 
 const successUpdateChurras = (state, { churras }) => {
   return {
     ...state,
-    churrasList: [...state.churrasList, churras],
+    singleChurras: churras,
     loading: { ...state.loading, churras: 0 },
   };
 };
@@ -128,15 +179,18 @@ const errorUpdateChurras = (state, { error }) => {
     error: {
       ...error,
       sessionUser: error,
-      loading: { ...state.loading, churras: 0 },
     },
+    loading: { ...state.loading, churras: 0 },
   };
 };
 
 const successConfirmChurras = (state, { churras }) => {
   return {
     ...state,
-    churrasList: [...state.churrasList, churras],
+    churrasList: [
+      ...state.churrasList.filter(({ _id }) => _id !== churras._id),
+      churras,
+    ],
     loading: { ...state.loading, churras: 0 },
   };
 };
@@ -146,9 +200,42 @@ const errorConfirmChurras = (state, { error }) => {
     ...state,
     error: {
       ...error,
-      sessionUser: error,
-      loading: { ...state.loading, churras: 0 },
+      churrasForm: error,
     },
+    loading: { ...state.loading, churras: 0 },
+  };
+};
+
+const successGetChurras = (state, { churras }) => {
+  return {
+    ...state,
+    singleChurras: { ...churras },
+    loading: { ...state.loading, churras: 0 },
+  };
+};
+
+const errorGetChurras = (state, { error }) => {
+  return {
+    ...state,
+    error: {
+      ...error,
+      singleChurras: error,
+    },
+    loading: { ...state.loading, churras: 0 },
+  };
+};
+
+const successSubmitParticipantFeedback = (state) => {
+  return { ...state, loading: { ...state.loading, participantFeedback: 0 } };
+};
+const errorSubmitParticipantFeedback = (state, { error }) => {
+  return {
+    ...state,
+    error: {
+      ...error,
+      participantFeedback: error,
+    },
+    loading: { ...state.loading, participantFeedback: 0 },
   };
 };
 
@@ -171,6 +258,12 @@ export default createReducer(initialState, {
   [Types.ERROR_CONFIRM_CHURRAS]: errorConfirmChurras,
   [Types.SUCCESS_GET_CHURRAS_LIST]: successGetChurrasList,
   [Types.ERROR_GET_CHURRAS_LIST]: errorGetChurrasList,
+  [Types.SUCCESS_GET_CHURRAS]: successGetChurras,
+  [Types.ERROR_GET_CHURRAS]: errorGetChurras,
+  [Types.SUCCESS_SUBMIT_PARTICIPANT_FEEDBACK]: successSubmitParticipantFeedback,
+  [Types.ERROR_SUBMIT_PARTICIPANT_FEEDBACK]: errorSubmitParticipantFeedback,
+  [Types.SUCCESS_DELETE_CHURRAS]: successDeleteChurras,
+  [Types.ERROR_DELETE_CHURRAS]: errorDeleteChurras,
   [Types.SET_TOKEN]: setToken,
   [Types.START_LOADER]: startLoader,
 });

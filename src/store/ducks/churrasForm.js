@@ -10,12 +10,14 @@ export const { Types, Creators } = createActions({
   successUpdateChurras: ['churras'],
   errorUpdateChurras: ['error'],
   successConfirmChurras: [],
+  clearChurrasForm: [],
+  populateChurrasForm: ['churras'],
 });
 
 const initialState = {
   step: 0,
   participants: [],
-  hasVeganOption: false,
+  hasVeganOption: true,
   drink: true,
   date: undefined,
   valueForTotal: 0,
@@ -24,7 +26,6 @@ const initialState = {
   valueForVegan: 0,
   title: '',
   description: '',
-  observations: '',
   pixKey: '',
   defineValueForParticipants: true,
   usePixKey: true,
@@ -36,7 +37,7 @@ const initialState = {
   user: '',
 };
 
-const participantInitialState = {
+export const participantInitialState = {
   name: '',
   contact: '',
   status: false,
@@ -103,6 +104,14 @@ const errorUpdateChurrasFormAfterRequest = (state, { error }) => {
   };
 };
 
+const clearChurrasForm = (state) => {
+  return { ...initialState };
+};
+
+const populateChurrasForm = (state, { churras }) => {
+  return { ...state, ...churras };
+};
+
 export default createReducer(initialState, {
   [Types.SET_CHURRAS_PROPERTY]: setChurrasProperty,
   [Types.SET_PARTICIPANT_PROPERTY]: setParticipantProperty,
@@ -113,4 +122,6 @@ export default createReducer(initialState, {
   [Types.SUCCESS_UPDATE_CHURRAS]: updateChurrasFormAfterRequest,
   [Types.SUCCESS_CONFIRM_CHURRAS]: successConfirmChurras,
   [Types.ERROR_UPDATE_CHURRAS]: errorUpdateChurrasFormAfterRequest,
+  [Types.CLEAR_CHURRAS_FORM]: clearChurrasForm,
+  [Types.POPULATE_CHURRAS_FORM]: populateChurrasForm,
 });

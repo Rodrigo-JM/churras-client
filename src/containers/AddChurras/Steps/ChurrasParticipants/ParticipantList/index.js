@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps, no-console */
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 import {
   Accordion,
@@ -12,21 +11,42 @@ import {
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ParticipantCard from '../ParticipantCard';
+import { formatCurrency } from '../../ChurrasValues/utils';
 
-export default function ParticipantsList({ participants }) {
+export default function ParticipantsList({ participants, editMode }) {
   const [participantSelected, setParticipantSelected] = useState(false);
 
   const handleChange = (participantIndex) => (event, isExpanded) => {
     setParticipantSelected(isExpanded ? participantIndex : false);
   };
 
+  const [warning, setWarning] = useState('');
+
+  const handleWarning = () => {
+    setWarning(
+      'Você realizou mudanças no evento. Clique em atualizar Informações para salvar',
+    );
+  };
   return (
     <Box
       sx={{
-        marginTop: '3em',
-        '@media (min-width: 768px)': { width: 768 },
+        marginTop: '1.3em',
+        padding: '1em',
+        // '@media (min-width: 768px)': { width: 768 },
       }}
     >
+      {editMode && warning && (
+        <Typography
+          color="secondary"
+          sx={{
+            letterSpacing: '0.1em',
+            fontWeight: 'bold',
+            marginBottom: '0.5em',
+          }}
+        >
+          {warning}
+        </Typography>
+      )}
       {participants.map((participant, participantIndex) => {
         return (
           <Accordion
@@ -38,7 +58,21 @@ export default function ParticipantsList({ participants }) {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>
+              <Typography
+                sx={{
+                  width: 50,
+                  color: participant.confirmedPix ? 'green' : 'darkUi',
+                }}
+              >
+                {participant.contributionValue && editMode
+                  ? formatCurrency(participant.contributionValue)
+                  : null}
+              </Typography>
+              <Typography
+                sx={{
+                  marginLeft: 5,
+                }}
+              >
                 {participant.name ? participant.name : 'Nome do Convidado'}
               </Typography>
             </AccordionSummary>
@@ -46,6 +80,8 @@ export default function ParticipantsList({ participants }) {
               <ParticipantCard
                 close={setParticipantSelected}
                 participantIndex={participantIndex}
+                warningHandler={handleWarning}
+                editMode
               />
             </AccordionDetails>
           </Accordion>

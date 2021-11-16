@@ -154,39 +154,43 @@ export default function ChurrasValues() {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container item sx={{ justifyContent: 'center' }} xs={12}>
-            <Grid item xs={5}>
-              <TextField
-                sx={{ width: '100%' }}
-                color="darkUi"
-                label="Valor Vegan (p/ convidado)"
-                type="number"
-                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                onChange={(e) => {
-                  changePropOnForm('valueForVegan', e.target.value * 1);
+          {hasVeganOption && (
+            <Grid container item sx={{ justifyContent: 'center' }} xs={12}>
+              <Grid item xs={5}>
+                <TextField
+                  sx={{ width: '100%' }}
+                  color="darkUi"
+                  label="Valor Vegan (p/ convidado)"
+                  type="number"
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  onChange={(e) => {
+                    changePropOnForm('valueForVegan', e.target.value * 1);
+                  }}
+                  value={churrasValueForVegan}
+                  size="small"
+                />
+                <FormHelperText sx={{ width: '100%' }} size="small">
+                  Valores numéricos. Vírgula como separador decimal, não inserir
+                  ponto.
+                </FormHelperText>
+              </Grid>
+              <Grid
+                item
+                xs={5}
+                sx={{
+                  alignItems: 'flex-start',
+                  display: 'flex',
+                  justifyContent: 'center',
                 }}
-                value={churrasValueForVegan}
-                size="small"
-              />
-              <FormHelperText sx={{ width: '100%' }} size="small">
-                Valores numéricos. Vírgula como separador decimal, não inserir
-                ponto.
-              </FormHelperText>
+              >
+                <Typography>
+                  {formatCurrency(
+                    churrasValueForVegan * totalVeganParticipants,
+                  )}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid
-              item
-              xs={5}
-              sx={{
-                alignItems: 'flex-start',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              <Typography>
-                {formatCurrency(churrasValueForVegan * totalVeganParticipants)}
-              </Typography>
-            </Grid>
-          </Grid>
+          )}
         </Grid>
 
         <Grid
@@ -206,22 +210,38 @@ export default function ChurrasValues() {
             sx={{
               borderRadius: '50%',
               background: '#C88CE3',
-              height: '100px',
-              width: '100px',
+              height: '120px',
+              width: '120px',
+              display: 'flex',
+              flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
               margin: 'auto',
+              filter: 'drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2))',
             }}
           >
-            <Typography sx={{ margin: '1em' }} textAlign="center">
+            <Typography
+              sx={{ margin: '1em', fontWeight: 'bold' }}
+              textAlign="center"
+            >
               Total
             </Typography>
-            <Typography sx={{ margin: '1em' }} textAlign="center">
+            <Typography
+              sx={{ margin: '1em', fontWeight: 'bold' }}
+              textAlign="center"
+            >
               {formatCurrency(total)}
             </Typography>
           </Grid>
         </Grid>
       </Grid>
+      <Typography
+        color="darkUi"
+        sx={{ padding: '2em', letterSpacing: '0.2em' }}
+      >
+        Ao clicar em confirmar, seus convidados serão notificados. Convidados
+        adicionados depois não serão notificados
+      </Typography>
     </Box>
   );
 }

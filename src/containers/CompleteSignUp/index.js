@@ -82,7 +82,7 @@ export default function CompleteSignUp() {
       <Box
         sx={{
           padding: '1em 1em',
-          marginTop: '3em',
+          marginTop: '1em',
           display: 'flex',
           justifyContent: 'center',
         }}
@@ -93,6 +93,13 @@ export default function CompleteSignUp() {
           sx={{ '@media (min-width: 768px)': { width: 768 } }}
         >
           <Grid item xs={12}>
+            <Button
+              color="darkUi"
+              sx={{ fontWeight: 'bold', marginBottom: '1em' }}
+              onClick={() => navigate('/')}
+            >
+              Voltar
+            </Button>
             <Typography sx={{ fontSize: 34, fontWeight: 'bold' }}>
               {!isUserPage() ? 'Complete seu cadastro' : 'Dados Pessoais'}
             </Typography>
@@ -114,7 +121,9 @@ export default function CompleteSignUp() {
                     value={name}
                   />
                 ) : (
-                  <Typography sx={{ fontSize: 24 }}>Nome: {name}</Typography>
+                  <Typography sx={{ fontSize: 18, wordBreak: 'break-all' }}>
+                    Nome: {name}
+                  </Typography>
                 )}
               </Grid>
               <Grid item xs={12}>
@@ -129,7 +138,7 @@ export default function CompleteSignUp() {
                     value={contact}
                   />
                 ) : (
-                  <Typography sx={{ fontSize: 24 }}>
+                  <Typography sx={{ fontSize: 18 }}>
                     Contato: {contact}
                   </Typography>
                 )}
@@ -146,7 +155,7 @@ export default function CompleteSignUp() {
                     value={pixKey}
                   />
                 ) : (
-                  <Typography sx={{ fontSize: 24 }}>
+                  <Typography sx={{ fontSize: 18 }}>
                     Chave Pix: {pixKey}
                   </Typography>
                 )}

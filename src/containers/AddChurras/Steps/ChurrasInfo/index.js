@@ -16,6 +16,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  Tooltip,
 } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -149,22 +150,26 @@ export default function ChurrasInfo() {
             </FormGroup>
           </Grid>
           <Grid item xs={12}>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    value={churrasDrink}
-                    onChange={(e) =>
-                      changePropOnForm('drink', e.target.checked)
-                    }
-                    size="small"
-                    checked={churrasDrink}
-                  />
-                }
-                size="small"
-                label="Bebidas"
-              />
-            </FormGroup>
+            <Tooltip title="Bebida tem que ter né" placement="left-start">
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      value={churrasDrink}
+                      onChange={(e) =>
+                        changePropOnForm('drink', e.target.checked)
+                      }
+                      onClick={() => console.log('click')}
+                      size="small"
+                      checked={churrasDrink}
+                      disabled
+                    />
+                  }
+                  size="small"
+                  label="Bebidas"
+                />
+              </FormGroup>
+            </Tooltip>
           </Grid>
         </Grid>
         <Grid container gap={2} item xs={12}>

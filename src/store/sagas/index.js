@@ -6,6 +6,9 @@ import { updateChurrasSaga } from './updateChurrasSaga';
 import { confirmChurrasSaga } from './confirmChurrasSaga';
 import { getChurrasListSaga } from './getChurrasListSaga';
 import { deleteUserSaga } from './deleteUserSaga';
+import { getChurrasSaga } from './getSingleChurrasSaga';
+import { submitParticipantFeedbackSaga } from './submitParticipantFeedbackSaga';
+import { deleteChurrasSaga } from './deleteChurrasSaga';
 
 export default function* root() {
   yield all([
@@ -16,5 +19,8 @@ export default function* root() {
     confirmChurrasSaga(),
     getChurrasListSaga(),
     deleteUserSaga(),
+    getChurrasSaga(),
+    submitParticipantFeedbackSaga(),
+    deleteChurrasSaga(),
   ]);
 }

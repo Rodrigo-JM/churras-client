@@ -24,8 +24,11 @@ export default function ChurrasParticipants() {
   const { participants } = useSelector((state) => state.churrasForm);
 
   const addParticipant = () => {
+    setWarning(true);
     dispatch(churrasCreators.addParticipant());
   };
+
+  const [warning, setWarning] = useState(false);
 
   return (
     <Box
@@ -51,7 +54,7 @@ export default function ChurrasParticipants() {
           </Button>
         </Grid>
       </Grid>
-      <ParticipantsList participants={participants} />
+      <ParticipantsList participants={participants} warningChange={warning} />
     </Box>
   );
 }

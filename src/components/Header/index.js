@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { LoginButton, LogoutButton } from '../Login';
 import { useNavigate } from 'react-router-dom';
 
-export default function Header({ accountButtonComponent }) {
+export default function Header({ noAccount }) {
   const { isAuthenticated } = useAuth0();
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ export default function Header({ accountButtonComponent }) {
         >
           CHURRAS.co
         </Typography>
-        {isAuthenticated ? (
+        {!noAccount && isAuthenticated ? (
           <Button
             variant="text"
             color="lightFont"
@@ -31,7 +31,13 @@ export default function Header({ accountButtonComponent }) {
             Conta
           </Button>
         ) : null}
-        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+        {!noAccount ? (
+          isAuthenticated ? (
+            <LogoutButton />
+          ) : (
+            <LoginButton />
+          )
+        ) : null}
       </Toolbar>
     </AppBar>
   );

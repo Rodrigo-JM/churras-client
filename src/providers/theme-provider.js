@@ -20,6 +20,9 @@ const theme = createTheme({
     lightFont: {
       main: '#ECECEA',
     },
+    shinyBlue: {
+      main: '#005CE6',
+    },
   },
   components: {
     MuiTextField: {

@@ -6,6 +6,8 @@ import LandingPage from './containers/LandingPage';
 import AddChurras from './containers/AddChurras';
 import Loader from './components/Loader';
 import { useAuth0 } from '@auth0/auth0-react';
+import ParticipantFeedback from './containers/ParticipantFeedback';
+import SingleChurras from './containers/SingleChurras';
 const AppRoutes = () => {
   const { isAuthenticated, isLoading, user, getAccessTokenSilently } =
     useAuth0();
@@ -24,6 +26,14 @@ const AppRoutes = () => {
       <Route
         path="/churras/add"
         element={isAuthenticated ? <AddChurras /> : <LandingPage />}
+      />
+      <Route
+        path="/churras/:churrasId"
+        element={isAuthenticated ? <SingleChurras /> : <LandingPage />}
+      />
+      <Route
+        path="/churras/:churrasId/participants/:participantId"
+        element={<ParticipantFeedback />}
       />
       <Route path="/start" element={<LandingPage />} />
     </Routes>
