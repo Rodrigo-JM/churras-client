@@ -8,9 +8,6 @@ module.exports = {
       name: 'churras-client',
       script: 'yarn',
       args: 'run start',
-      env_production: {
-        NODE_ENV: 'production',
-      },
     },
   ],
 };
