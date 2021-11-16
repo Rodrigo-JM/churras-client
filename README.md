@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+## Solução
+Implementei uma solução simples com create-react-app, redux e material-ui. A proposta é uma aplicação para criação de eventos na qual o usuário poderá atribuir valores para comida e bebida, bem como valor para opções veganas. Cada convidado pode ter necessidade específicas, e isso acarretará em um valor diverso para cada um
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Telas
+A aplicação conta com uma tela de chegada, apenas com botão para logar.
+Tela de listagem de eventos (busca desabilitada)
+Tela de criação de eventos em etapas. 
+ - Etapa 1: Informações básicas do evento
+ - Etapa 2: Criação da lista de convidados, podendo preencher as necessidades de cada um
+ - Etapa 3: Valores e confirmação do evento
 
-## Available Scripts
+Tela de visualização do evento. Inclui a possibilidade de edição do mesmo
+Tela de feedback do convidado. Nessa tela, o convidado pode corrigir as informações preenchidas pelo 
 
-In the project directory, you can run:
+## State
+A minha abordagem foi ter 2 reducers para administração do state da aplicação. 
+ - Session: State voltado para as informações carregadas da api, voltadas para a estrutura da aplicaçao total
+ - ChurrasForm: State voltado para a administração das informações do evento, com ações específicas para ajudar a manejar o formulário
 
-### `yarn start`
+## Interface
+Utilizei os componentes da Material-UI para facilitar no desenvolvimento da ui.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Fluxo
+1. Landing Page -> Usuário faz o cadastro e preenche as informações complementares
+2. Listagem de churras -> Usuário pode ver todos os churrascos que criou e também pode criar mais
+3. Criação de churras -> Criação em 3 etapas
+ - Etapa 1: Informações básicas do evento
+ - Etapa 2: Criação da lista de convidados, podendo preencher as necessidades de cada um
+ - Etapa 3: Valores e confirmação do evento
+4. Página de feedback dos convidados -> Nessa página o convidado corrige as informações que o criador do evento preencheu e já recebe o valor que tem que pagar. O convidado pode também copiar a chave pix do criador e confirmar a presença
+5. Visualização do churras -> Na tela de visualização do churras o usuário pode ir acompanhando o valor arrecadado e também ir atualizando os convidados (como a mensageria ta off, essa é a forma de ir atualizando o evento).
+6. Depois de realizado o churras, o usuario pode cancelar o evento para deletar ele da lista.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Host 
+Fiz o host no cloudfront. https://app.churras-trinca.com
+Aws as vezes dá uns probleminhas.....
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
