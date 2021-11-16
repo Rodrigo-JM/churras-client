@@ -133,7 +133,9 @@ const successDeleteChurras = (state, { churrasId }) => {
   return {
     ...state,
     churrasList: [
-      ...state.churrasList.filter((churras) => churras._id !== churrasId),
+      ...state.churrasList.filter(
+        (churras) => churras._id !== churrasId && churras._id,
+      ),
     ],
     loading: { ...state.loading, churras: 0 },
   };

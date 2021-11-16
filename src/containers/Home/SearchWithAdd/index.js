@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Grid, TextField } from '@mui/material';
+import { Box, Button, Grid, TextField, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -24,11 +24,14 @@ export default function SearchWithAdd({ searchAction, addAction }) {
       >
         <Grid container item xs={12}>
           <Grid item xs={8}>
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-              sx={{ width: '100%', height: 50, '&:fieldset': { top: -2 } }}
-            />
+            <Tooltip title="No futuro talvez, quem sabe">
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                sx={{ width: '100%', height: 50, '&:fieldset': { top: -2 } }}
+                disabled
+              />
+            </Tooltip>
           </Grid>
           <Grid
             item
@@ -43,8 +46,11 @@ export default function SearchWithAdd({ searchAction, addAction }) {
             <Button
               variant="contained"
               sx={{ width: '80%', height: 45, padding: '0px', minWidth: 45 }}
+              disabled
             >
-              <SearchIcon color="lightFont" />
+              <Tooltip title="No futuro talvez, quem sabe">
+                <SearchIcon color="lightFont" />
+              </Tooltip>
             </Button>
           </Grid>
           <Grid

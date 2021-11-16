@@ -36,7 +36,6 @@ export default function ParticipantsList({
       sx={{
         marginTop: '1.3em',
         padding: '1em',
-        // '@media (min-width: 768px)': { width: 768 },
       }}
     >
       {editMode && warning && (
@@ -56,6 +55,7 @@ export default function ParticipantsList({
           <Accordion
             expanded={participantSelected === participantIndex}
             onChange={handleChange(participantIndex)}
+            key={participantIndex}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}

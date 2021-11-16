@@ -45,14 +45,14 @@ export default function ChurrasList({ addAction }) {
             justifyContent: 'flex-start',
           }}
         >
-          {churrasList.map((churras) => {
+          {churrasList.map((churras, index) => {
             return (
-              <Grid xs={5} md={3}>
+              <Grid item xs={5} md={3} key={index}>
                 <ChurrasCard churras={churras} />
               </Grid>
             );
           })}
-          <Grid xs={5} md={3}>
+          <Grid item xs={5} md={3}>
             <Card
               sx={{
                 maxWidth: 275,

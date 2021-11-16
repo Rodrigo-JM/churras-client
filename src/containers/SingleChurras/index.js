@@ -96,7 +96,7 @@ export default function SingleChurras() {
             </Grid>
           </Grid>
           <ParticipantsList participants={participants} editMode />
-          <Typography sx={{ padding: '2em' }}>
+          <Typography variant="h1" sx={{ padding: '2em' }}>
             <Typography sx={{ fontStyle: 'oblique' }}>Descrição</Typography>
             {description ? description : 'Evento sem descrição'}
           </Typography>
