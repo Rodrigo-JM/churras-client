@@ -15,7 +15,7 @@ export default function SuccessScreen({ name, contact, contibutionValue }) {
         color="darkUi"
         sx={{ fontSize: 22, letterSpacing: '0.1em', marginTop: '3em' }}
       >
-        Entre em contato com {name} ({contact}) para acertar os valores
+        Entre em contato com {contact} para acertar os valores
       </Typography>
       <Typography
         color="darkUi"
